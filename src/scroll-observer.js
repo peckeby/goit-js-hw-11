@@ -16,9 +16,9 @@ export const observer = new IntersectionObserver(
       const { hits } = data
       refs.gallery.insertAdjacentHTML('beforeend', createGalleryCards(hits));
 
-      if (hits.length === 0) { 
+      if (hits.length === 0) {
         observer.unobserve(refs.targetElement);
-        Notify.failure(notify.lastPictures)
+        setTimeout(() => {Notify.failure(notify.lastPictures)}, 1200)
       }
 
     } catch (err) {
