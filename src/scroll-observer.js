@@ -9,16 +9,16 @@ export const observer = new IntersectionObserver(
   async (entries, observer) => {
   if (entries[0].isIntersecting) {
     pixabayApi.page += 1;
-
+ observer.unobserve(entries[?].target);
     try {
       const response = await pixabayApi.fetchPhotos();
       const { data } = response;
       const { hits } = data
       refs.gallery.insertAdjacentHTML('beforeend', createGalleryCards(hits));
 
-      if (hits.length === 0) {
-        observer.unobserve(refs.targetElement);
-        setTimeout(() => {Notify.failure(notify.lastPictures)}, 1200)
+      if (page < Math.ceil(data.totalHits / 40)) {
+       
+      observer.observe(refs.target);
       }
 
     } catch (err) {
