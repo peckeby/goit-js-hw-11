@@ -19,9 +19,9 @@ export const observer = new IntersectionObserver(
       observer.observe(refs.target);
       }
       
-      if(hits.length === 0){
-      observer.unobserve(entries[0].target);
-      setTimeout(() => {Notify.failure(notify.lastPictures)}, 1200);
+      if (hits.length === 0) {
+        observer.unobserve(refs.targetElement);
+        setTimeout(() => {Notify.failure(notify.lastPictures)}, 1200)
       }
 
     } catch (err) {
