@@ -20,7 +20,7 @@ export class PixabayApi {
         orientation: 'horizontal',
         safesearch: true,
         page: this.page,
-        per_page: 50,
+        per_page: 40,
       },
     };
 

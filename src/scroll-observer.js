@@ -14,8 +14,9 @@ export const observer = new IntersectionObserver(
         const { data } = response;
         const { hits } = data;
         refs.gallery.insertAdjacentHTML('beforeend', createGalleryCards(hits));
+        console.log(data.totalHits);
 
-        if (pixabayApi.page === 10) {
+        if (pixabayApi.page > Math.floor(data.totalHits / 40)) {
           observer.unobserve(refs.targetElement);
           setTimeout(() => {
             Notify.info(notify.lastPictures);
