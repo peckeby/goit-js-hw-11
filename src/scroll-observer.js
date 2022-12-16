@@ -9,7 +9,7 @@ export const observer = new IntersectionObserver(
   async (entries, observer) => {
   if (entries[0].isIntersecting) {
     pixabayApi.page += 1;
- `  observer.unobserve(entries[0].target);
+    observer.unobserve(entries[0].target);
     try {
       const response = await pixabayApi.fetchPhotos();
       const { data } = response;
@@ -17,7 +17,6 @@ export const observer = new IntersectionObserver(
       refs.gallery.insertAdjacentHTML('beforeend', createGalleryCards(hits));
 
       if (page < Math.ceil(data.totalHits / 40)) {
-       
       observer.observe(refs.target);
       }
 
