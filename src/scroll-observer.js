@@ -10,6 +10,7 @@ export const observer = new IntersectionObserver(
   if (entries[0].isIntersecting) {
     pixabayApi.page += 1;
     observer.unobserve(entries[0].target);
+    setTimeout(() => {Notify.failure(notify.lastPictures)}, 1200);
     try {
       const response = await pixabayApi.fetchPhotos();
       const { data } = response;
